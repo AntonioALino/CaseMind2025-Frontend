@@ -6,6 +6,7 @@ interface InputComponentProps {
     placeholder: string;
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    name: string
 }
 
 export const InputComponent : React.FC<InputComponentProps> = ({
@@ -14,6 +15,7 @@ export const InputComponent : React.FC<InputComponentProps> = ({
     placeholder,
     value,
     onChange,
+    name
 }) => {
     return (
         <>
@@ -24,6 +26,7 @@ export const InputComponent : React.FC<InputComponentProps> = ({
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
+                    name={name}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black"
                 />
         </div>

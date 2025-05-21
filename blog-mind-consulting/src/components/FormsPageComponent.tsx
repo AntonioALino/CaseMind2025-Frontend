@@ -19,7 +19,7 @@ export const FormsPageComponent: React.FC<FormsPageProps> = ({
     return (
         <div>
             <h3 className="text-center text-xl font-semibold mb-6">{titleModal}</h3>
-            <form action="" method="post" className="w-full max-w-sm">
+            <form action="" method="post" className="w-full max-w-sm" >
                 {inputEmail}
                 {inputPassword}
                 {inputConfirmPassword}
