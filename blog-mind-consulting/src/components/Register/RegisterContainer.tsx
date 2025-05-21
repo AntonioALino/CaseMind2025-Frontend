@@ -41,6 +41,8 @@ export default function RegisterContainer() {
 
         return(
             <>
+            <div className="w-100">
+                <h2 className="text-center text-xl font-semibold mb-6">Registrar</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                       <InputComponent
                           titleInput="Email"
@@ -72,8 +74,11 @@ export default function RegisterContainer() {
                       <ButtonPageComponent 
                           buttonTextProps={"Criar conta"}
                       />
+                       <div className="text-center">
+                            <a href="/login" className="text-center text-black-500 hover:underline">Já possui uma cadastro? Clique aqui!</a>
+                       </div>
                 </form>
-            
+            </div>
                     <ToastContainer position="bottom-right" autoClose={3000}/>
             </>
         )

@@ -29,7 +29,7 @@ export default function RecoverPasswordContainer() {
         }
 
         try{
-            const response = await api.post('users', payload);
+            const response = await api.patch('users/password/:id', payload);
             setForm({ email: '', password: '', confirmPassword: '' });
 
             toast.success('Conta criada com sucesso!')
@@ -41,6 +41,8 @@ export default function RecoverPasswordContainer() {
 
         return(
             <>
+            <div className="w-100">
+                <h2 className="text-center text-xl font-semibold mb-6">Esqueci a senha</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                       <InputComponent
                           titleInput="Email"
@@ -70,10 +72,16 @@ export default function RecoverPasswordContainer() {
                       />
     
                       <ButtonPageComponent 
-                          buttonTextProps={"Criar conta"}
+                          buttonTextProps={"Alterar"}
                       />
+
+                    <div className="text-center">
+                        <a href="/login" className="text-center text-black-500 hover:underline">Já possui uma cadastro? Clique aqui!</a>
+                    </div>
+                    
                 </form>
-                    <ToastContainer position="bottom-right" autoClose={3000}/>
+            </div>    
+                <ToastContainer position="bottom-right" autoClose={3000}/>
             </>
         )
 

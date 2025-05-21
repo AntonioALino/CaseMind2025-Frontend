@@ -5,8 +5,12 @@ import type { LoginData } from '../../schema/loginSchema';
 import { toast, ToastContainer } from "react-toastify";
 import { InputComponent } from "../InputComponent";
 import { ButtonPageComponent } from "../ButtonPageComponent";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginContainer() {
+
+    const navigate = useNavigate();
+
     const [form, setForm] = useState<LoginData>({ password: '', email: '' });
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +49,8 @@ export default function LoginContainer() {
     }
     return (
         <>
+        <div className="w-100">
+        <h2 className="text-center text-xl font-semibold mb-6" >Conectar</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <InputComponent
                     titleInput="Email"
@@ -63,13 +69,19 @@ export default function LoginContainer() {
                     onChange={handleChange}
                     placeholder="****"
                 />
-
+                <div className="text-right">
+                <a href="/recover-password" className="text-sm text-black-500 hover:underline">Esqueceu a senha? </a>
+                </div>
                 <ButtonPageComponent 
                     buttonTextProps={"Entrar"}
                 />
+            <div className="text-center">
+                <a href="/register" className="text-center text-black-500 hover:underline">Novo usuário? Clique aqui!</a>
+            </div>
             </form>
-
+        </div>
             <ToastContainer position="bottom-right" autoClose={3000}/>
+            
         </>
     )
 }
