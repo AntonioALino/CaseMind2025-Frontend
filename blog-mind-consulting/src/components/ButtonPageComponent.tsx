@@ -1,5 +1,4 @@
 import React from 'react';
-import  '../styles/components/ButtonPageComponentsStyle.css';
 
 interface ButtonPageProps {
     buttonTextProps: string;
@@ -11,7 +10,7 @@ export const ButtonPageComponent: React.FC<ButtonPageProps> = ({
     onClick,
 }) => {
     return (
-        <button onClick={onClick} className='button'>
+        <button onClick={onClick}>
             {buttonTextProps}
         </button>
     );

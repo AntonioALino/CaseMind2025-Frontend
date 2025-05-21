@@ -2,7 +2,6 @@ import React from "react";
 import {PageComponent}  from "../components/PageComponent";
 import { ButtonPageComponent } from "../components/ButtonPageComponent";
 import { FormsPageComponent } from "../components/FormsPageComponent";
-import '../styles/teste.css';
 
 export const LoginPage: React.FC = () => {
     const handleLogin = () => {
@@ -11,12 +10,13 @@ export const LoginPage: React.FC = () => {
     };
 
     return (
-    <div className="login-container">
+    <div>
+        <>
         <PageComponent
             onClick={handleLogin}
             form={
                 <FormsPageComponent
-                    titleModal="Acessar"
+                    titleModal="Conectar"
                     formType="text"
                     placeholder="Digite seu email"
                     inputEmail={
@@ -24,7 +24,7 @@ export const LoginPage: React.FC = () => {
                         <p>Email</p>
                         <input
                             type="text"
-                            placeholder="Digite seu email"
+                            placeholder="example@email.com"
                             onChange={(e) => console.log(e.target.value)}
                         />
                         </>
@@ -35,9 +35,10 @@ export const LoginPage: React.FC = () => {
                         <p>Senha</p>
                         <input
                             type="password"
-                            placeholder="Digite sua senha"
+                            placeholder="****"
                             onChange={(e) => console.log(e.target.value)}
                         />
+                        <a href="#">Esqueceu a senha?</a>
                         </>
                     }
                     
@@ -49,8 +50,9 @@ export const LoginPage: React.FC = () => {
                     onClick={handleLogin}
                 />
             }
-        
         />
+        <a href="">Novo usuário? Clique aqui!</a>
+        </>
     </div>
     );
 }

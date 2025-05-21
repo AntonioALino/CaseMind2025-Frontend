@@ -1,5 +1,4 @@
 import React from "react";
-import '../styles/teste.css'
 
 interface FormsPageProps {
     titleModal: string;
@@ -18,9 +17,9 @@ export const FormsPageComponent: React.FC<FormsPageProps> = ({
     inputConfirmPassword,
 }) => {
     return (
-        <div className="login-right">
+        <div>
             <h3>{titleModal}</h3>
-            <form action="" method="post" className="login-form">
+            <form action="" method="post">
                 {inputEmail}
                 {inputPassword}
                 {inputConfirmPassword}

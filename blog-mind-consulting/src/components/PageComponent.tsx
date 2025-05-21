@@ -1,5 +1,4 @@
 import React from "react";
-import '../styles/components/PageComponentSyle.css'
 
 
 interface ContainerPageProps {
@@ -15,7 +14,7 @@ export const PageComponent : React.FC<ContainerPageProps> = ({
 }) => {
 
     return (
-        <div className="page-container">
+        <div>
             <div style={{
                     flex: 1,
                     backgroundColor: "#000",
