@@ -13,54 +13,39 @@ export const ForgotPasswordPage: React.FC  = () => {
         <div>
             <PageComponent
                 onClick={handleLogin}
-                form={
-                    <FormsPageComponent
-                        titleModal="Registrar"
-                        formType="text"
-                        placeholder="Digite seu email"
-                        inputEmail={
-                            <>
-                            <p>Email</p>
-                            <input
-                                type="text"
-                                placeholder="examplo@emailcom"
-                                onChange={(e) => console.log(e.target.value)}
-                            />
-                            </>
-                        }
-                        
-                        inputPassword={
-                            <>
-                            <p>Senha</p>
-                            <input
-                                type="password"
-                                placeholder="***"
-                                onChange={(e) => console.log(e.target.value)}
-                            />
-                            </>
-                        }
+                form={<FormsPageComponent
+                    titleModal="Registrar"
+                    formType="text"
+                    placeholder="Digite seu email"
+                    inputEmail={<>
+                        <p>Email</p>
+                        <input
+                            type="text"
+                            placeholder="examplo@emailcom"
+                            onChange={(e) => console.log(e.target.value)} />
+                    </>}
 
-                        inputConfirmPassword={
-                            <>
-                            <p>Confirmar senha</p>
-                            <input
-                                type="password"
-                                placeholder="****"
-                                onChange={(e) => console.log(e.target.value)} 
-                            />
-                            </>
-                        }
-                        
-                    />
-                }
-                button={
-                    <ButtonPageComponent
-                        buttonTextProps="Alterar"
-                        onClick={handleLogin}
-                    />
-                }
-            />
-                <a href="">Já tem cadastro? Clique aqui!</a>
-        </div>
+                    inputPassword={<>
+                        <p>Senha</p>
+                        <input
+                            type="password"
+                            placeholder="***"
+                            onChange={(e) => console.log(e.target.value)} />
+                    </>}
+
+                    inputConfirmPassword={<>
+                        <p>Confirmar senha</p>
+                        <input
+                            type="password"
+                            placeholder="****"
+                            onChange={(e) => console.log(e.target.value)} />
+                    </>} />}
+                button={<ButtonPageComponent
+                    buttonTextProps="Alterar"
+                    onClick={handleLogin} />} 
+
+                    link={"#"} 
+                    textLink={"Já possui cadastro? Clique aqui!"}            />
+            </div>
         );
 }

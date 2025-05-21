@@ -1,5 +1,4 @@
 import React from "react";
-import '../styles/teste.css'
 
 interface InputComponentProps {
     titleInput: string
@@ -18,15 +17,16 @@ export const InputComponent : React.FC<InputComponentProps> = ({
 }) => {
     return (
         <>
-        <p>{titleInput}</p>
-        <input
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            className="login-form-input"
-        />
-
+        <div className="mb-4">
+            <label className="block text-sm font-medium mb-1">{titleInput}</label>
+                <input
+                    type={type}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={onChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black"
+                />
+        </div>
         </>
     );
 }
