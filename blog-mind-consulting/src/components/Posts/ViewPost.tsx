@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { api } from "../../services/api";
-import { jwtDecode } from "jwt-decode";
 import { HeaderComponentLogin } from "../Home/HeaderLogin";
 
 interface Post {
+  authorId: string,
   id: string;
   title: string;
   content: string;
@@ -12,19 +12,9 @@ interface Post {
   createdAt: string;
 }
 
-interface TokenPayload {
-  id: string;
-  email: string;
-  name: string;
-  exp: number;
-  iat: number;
-}
-
 export const ViewMyPosts: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const navigate = useNavigate();
-
-  const { id } = useParams();
 
   useEffect(() => {
     const token = localStorage.getItem("authtoken");
@@ -32,16 +22,20 @@ export const ViewMyPosts: React.FC = () => {
       console.error("Token não encontrado");
       return;
     }
-
-    const decoded = jwtDecode<TokenPayload>(token);
-    const userId = decoded.id;
-
-    api.get(`/posts?authorId=${userId}`)
-      .then((res) => setPosts(res.data))
-      .catch((err) => console.error("Erro ao buscar posts:", err));
+    
+  api.get(`/users/posts`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(res => {
+      console.log(res.data)
+  setPosts(res.data);
+})
+    .catch((err) => console.error("Erro ao buscar posts:", err));
   }, []);
 
-  const handleEdit = () => {
+  const handleEdit = (id : string) => {
     navigate(`/edit-post/${id}`);
   };
 
@@ -69,7 +63,7 @@ export const ViewMyPosts: React.FC = () => {
                   Criado em: {new Date(post.createdAt).toLocaleDateString()}
                 </p>
                 <button
-                  onClick={() => handleEdit()}
+                  onClick={() => handleEdit(post.id)}
                   className="bg-blue-500 text-white px-4 py-2 rounded"
                 >
                   Editar

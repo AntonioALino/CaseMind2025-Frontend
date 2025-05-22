@@ -67,9 +67,6 @@ export const ArticleForm: React.FC<Props> = ({ mode }) => {
 
     const decoded = jwtDecode<TokenPayload>(token);
     const userId = decoded.id; 
-    console.log("userId extraído do token:", userId);
-
-    console.log("Id do usuário: ", userId);
 
     const formData = new FormData();
     formData.append("title", form.title);
