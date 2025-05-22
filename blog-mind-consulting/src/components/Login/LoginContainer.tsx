@@ -35,7 +35,7 @@ export default function LoginContainer() {
 
     try {
         const response = await api.post('/auth/login', payload);
-        const token = response.data;
+        const token = response.data.token;
 
         toast.success('Login realizado com sucesso!');
 

@@ -6,6 +6,9 @@ import { HomePage } from './pages/HomePage';
 import { PostProvider } from './components/Posts/PostContex';
 import { PrivateRoute } from './components/auth/PrivateRoutes';
 import { HomeLoginPage } from './pages/HomeLoginPage';
+import { CreatePostPage } from './pages/CreatePostPage';
+import { ViewMyPosts } from './components/Posts/ViewPost';
+import { EditPostPage } from './pages/EditPostPage';
 function App() {
 
   return (
@@ -20,6 +23,9 @@ function App() {
         {/* Rotas protegidas */}
         <Route element={<PrivateRoute />}>
           <Route path="/home-login" element={<HomeLoginPage />} />
+          <Route path='/create-posts' element={<CreatePostPage/>} />
+          <Route path='/edit-post/{id}' element={<EditPostPage/>} />
+          <Route path="/meus-posts" element={<ViewMyPosts />} />
         </Route>
 
         </Routes>
