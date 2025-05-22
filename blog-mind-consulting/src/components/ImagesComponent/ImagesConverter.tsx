@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 interface ImageFromDataProps {
   data: string; // espera a string base64 da imagem
   alt: string;
+  className?: string;
 }
 
-export const ImageFromData = ({ data, alt }: ImageFromDataProps) => {
+export const ImageFromData = ({ data, alt, className}: ImageFromDataProps) => {
   const [url, setUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export const ImageFromData = ({ data, alt }: ImageFromDataProps) => {
   }, [data]);
 
   if (!url) return <p>Carregando imagem...</p>;
-  return <img src={url} alt={alt} />;
+  return <img src={url} alt={alt} className={className}/>;
 };
 
 function base64ToUint8Array(base64: string): Uint8Array {

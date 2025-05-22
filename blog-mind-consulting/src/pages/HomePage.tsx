@@ -1,8 +1,8 @@
 import React from "react";
-import { HomeLoginComponent } from "../components/Home/HomePageLogin";
+import { HomeWithoutLoginComponent } from "../components/Home/HomePageWithoutLogin";
 
 export const HomePage : React.FC = () => {
     return(
-        <HomeLoginComponent/>
+        <HomeWithoutLoginComponent />
     )
 }

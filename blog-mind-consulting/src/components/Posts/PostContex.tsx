@@ -6,7 +6,7 @@ interface Post {
   id: string;
   title: string;
   content: string;
-  authorId: string;
+  name: string;
   slug: string;
   image: string;
   createdAt: string;

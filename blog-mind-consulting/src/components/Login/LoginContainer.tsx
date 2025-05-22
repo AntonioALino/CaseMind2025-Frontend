@@ -41,6 +41,7 @@ export default function LoginContainer() {
 
         localStorage.setItem('authtoken', token);
 
+        navigate('/home-login')
         
 
     } catch(err: any) {

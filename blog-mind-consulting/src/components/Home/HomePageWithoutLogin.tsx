@@ -2,15 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { ImageFromData } from "../ImagesComponent/ImagesConverter";
 import { usePosts } from "../Posts/PostContex";
 import { SideNews } from "../Posts/SideNews";
-import { HeaderComponentLogin } from "./HeaderLogin";
+import { HeaderComponentLogout } from "./HeaderLogout";
 
-export const HomeLoginComponent = () => {
+export const HomeWithoutLoginComponent = () => {
   const { posts } = usePosts();
   const navigate = useNavigate();
 
   return (
     <div>
-      <HeaderComponentLogin />
+      <HeaderComponentLogout />
 
       <div className="p-4 max-w-7xl mx-auto">
         {Array.isArray(posts) && posts.length > 0 ? (

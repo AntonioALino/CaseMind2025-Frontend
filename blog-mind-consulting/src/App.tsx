@@ -4,6 +4,8 @@ import { RegisterPage } from './pages/RegisterPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { HomePage } from './pages/HomePage';
 import { PostProvider } from './components/Posts/PostContex';
+import { PrivateRoute } from './components/auth/PrivateRoutes';
+import { HomeLoginPage } from './pages/HomeLoginPage';
 function App() {
 
   return (
@@ -14,6 +16,12 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path='/recover-password' element={<ForgotPasswordPage/>}/>
+
+        {/* Rotas protegidas */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/home-login" element={<HomeLoginPage />} />
+        </Route>
+
         </Routes>
       </Router>
     </PostProvider>
