@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate} from "react-router-dom";
-import { api } from "../../services/api";
-import { HeaderComponentLogin } from "../Home/HeaderLogin";
+import { api } from "../services/api";
+import { HeaderComponentLogin } from "../components/Home/HeaderLogin";
 
 interface Post {
   authorId: string,
@@ -12,9 +11,8 @@ interface Post {
   createdAt: string;
 }
 
-export const ViewMyPosts: React.FC = () => {
+export const ListViewPostsLoginPage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("authtoken");
@@ -35,15 +33,10 @@ export const ViewMyPosts: React.FC = () => {
     .catch((err) => console.error("Erro ao buscar posts:", err));
   }, []);
 
-  const handleEdit = (id : string) => {
-    navigate(`/edit-post/${id}`);
-  };
-
   return (
     <>
       <HeaderComponentLogin />
       <div className="max-w-6xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6">Meus Artigos</h1>
         {posts.length === 0 ? (
           <p>Você ainda não criou nenhum post.</p>
         ) : (
@@ -62,12 +55,6 @@ export const ViewMyPosts: React.FC = () => {
                 <p className="text-sm text-gray-600 mb-4">
                   Criado em: {new Date(post.createdAt).toLocaleDateString()}
                 </p>
-                <button
-                  onClick={() => handleEdit(post.id)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Editar
-                </button>
               </div>
             ))}
           </div>

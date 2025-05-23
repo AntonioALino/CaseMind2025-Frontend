@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ImageFromDataProps {
   data: string; // espera a string base64 da imagem
