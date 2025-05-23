@@ -28,14 +28,14 @@ export const HomeLoginComponent = () => {
                 </p>
                   <button
                     className="bg-red-500 text-white px-4 py-2 rounded"
-                    onClick={() => navigate(`/post/${posts[0].id}`)}
+                    onClick={() => navigate(`/posts/login/${posts[0].slug}`)}
                   >
                     Ler mais
                   </button>
               </div>
 
               <div className="w-full md:w-[300px]">
-                <SideNews posts={posts.slice(1)} />
+                <SideNews posts={posts.slice(1, 5)} />
               </div>
             </div>
 

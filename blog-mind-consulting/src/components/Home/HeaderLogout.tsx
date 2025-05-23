@@ -13,8 +13,8 @@ export const HeaderComponentLogout: React.FC = () => {
           </div>
           <div className="flex items-center space-x-6">
             <nav className="hidden md:flex space-x-8 text-gray-700 font-medium">
-              <a href="#" className="hover:text-black transition-colors">Home</a>
-              <a href="#" className="hover:text-black transition-colors">Artigos</a>
+              <a href="/" className="hover:text-black transition-colors">Home</a>
+              <a href="/view-posts-logout" className="hover:text-black transition-colors">Artigos</a>
               <div className="h-5 w-[1px] bg-gray-300 self-center" />
               <a href="/login" className="hover:text-black transition-colors">Entrar</a>
             </nav>

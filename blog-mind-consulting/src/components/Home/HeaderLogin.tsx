@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ModalPerfil } from '../ModalPerfil';
+import { api } from '../../services/api'; 
+
+interface User {
+  profileImage: string | null;
+}
 
 export const HeaderComponentLogin: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState<User>({ profileImage: null });
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+
+  useEffect(() => {
+    const loadUserProfile = async () => {
+      try {
+        const token = localStorage.getItem('authtoken');
+        if (!token) return;
+
+        const response = await api.get('/profile', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        
+        setUser({ profileImage: response.data.image });
+      } catch (error) {
+        console.error('Erro ao carregar perfil:', error);
+      }
+    };
+
+    loadUserProfile();
+  }, []);
 
   return (
     <header className="w-full bg-white relative z-50">
@@ -18,7 +44,7 @@ export const HeaderComponentLogin: React.FC = () => {
         <div className="flex items-center space-x-6">
           <nav className="hidden md:flex space-x-8 text-gray-700 font-medium">
             <a href="/home-login" className="hover:text-black transition-colors">Home</a>
-            <a href="#" className="hover:text-black transition-colors">Artigos</a>
+            <a href="/view-posts" className="hover:text-black transition-colors">Artigos</a>
             <div className="h-5 w-[1px] bg-gray-300 self-center" />
             <a href="/create-posts" className="hover:text-black transition-colors">Publicar</a>
           </nav>
@@ -26,7 +52,7 @@ export const HeaderComponentLogin: React.FC = () => {
           <div className="relative">
             <button onClick={toggleModal}>
               <img
-                src="https://randomuser.me/api/portraits/men/32.jpg"
+                src={user.profileImage ?? '/default-avatar.png'}
                 alt="Avatar"
                 className="w-10 h-10 rounded-full object-cover border border-gray-300"
               />
